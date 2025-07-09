@@ -1,0 +1,21 @@
+首先已经通过jtop查看JetPack版本为5.1.2并安装对应的pytorch（版本为2.1.0）
+执行命令，确保安装正确的numpy版本，避免兼容性问题
+pip install numpy==1.23.5
+接下来开始安装torchvision 0.16.1
+1、安装依赖库
+sudo apt-get install libjpeg-dev zlib1g-dev libpython3-dev libopenblas-dev libavcodec-dev libavformat-dev libswscale-dev
+2、克隆并安装torchvision
+git clone --branch v0.16.1 https://github.com/pytorch/vision torchvision
+3、进入torchvision目录
+cd torchvision
+4、设置构建版本环境变量
+export BUILD_VERSION=0.16.1
+5、构建并安装
+python setup.py install --user
+安装完成后，运行一下命名验证Pytorch和torchvision的安装
+python3 -c "import torch; print(torch.__version__); print(torch.cuda.is_available())"
+python3 -c "import torchvision; print(torchvision.__version__)"
+预期输出：
+2.1.0
+True
+0.16.1
