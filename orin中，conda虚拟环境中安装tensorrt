@@ -1,0 +1,11 @@
+1. 激活 Conda 环境
+conda activate YOLO
+2. 安装必要的依赖项
+pip install pycuda onnx
+3. 将系统级 TensorRT 复制到 Conda 环境
+由于 TensorRT 的 Python 绑定默认安装在系统级的 /usr/lib/python3.8/dist-packages/ 目录中，您需要将其复制到 Conda 环境的 site-packages 目录：
+cp -r /usr/lib/python3.8/dist-packages/tensorrt* $(conda info --base)/envs/YOLO/lib/python3.8/site-packages/
+4. 验证安装
+在 Conda 环境中，验证 TensorRT 是否正确安装：
+python -c "import tensorrt; print(tensorrt.__version__)"
+如果输出了版本号，说明安装成功。
